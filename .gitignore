@@ -3,3 +3,5 @@ __pycache__/
 venv/
 auth.json
 logs.log
+*.db
+*.db-journal

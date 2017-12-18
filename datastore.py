@@ -20,8 +20,9 @@ def insert_link(db, reddit_id):
     else:
         type_text = 'Comment'
 
-    query = 'INSERT OR IGNORE INTO links (Type, RedditId) VALUES(:type, :id)'
-    db.execute(query, {'type': type_text, 'id': reddit_id})
+    query = f"INSERT INTO links (Type, RedditId) VALUES('{type_text}', '{reddit_id}')"
+    db.execute(query)
+    db.commit()
 
 
 def get_all_links(db):

@@ -1,4 +1,5 @@
 import time
+import logging
 
 import datastore
 
@@ -12,6 +13,8 @@ LINK_WORDS = [
     'website',
     'url',
 ]
+
+logger = logging.getLogger(__name__)
 
 
 def is_risky(comment):
@@ -32,6 +35,7 @@ def scan_for_risky_links(db, reddit, scan_time):
 
     for comment in subreddit.stream.comments():
         if is_risky(comment):
+            logger.info('Found potential risky click')
             datastore.insert_link(db, comment.parent_id)
         elapsed_time = time.time() - start_time
         if elapsed_time/3600 >= scan_time:

@@ -8,7 +8,7 @@ import datastore
 import link_scanner as scanner
 import link_rater as rater
 
-SCAN_TIME_HOURS = 0.01
+SCAN_TIME_HOURS = 4
 
 
 def main():
